@@ -6,21 +6,38 @@
         {
             Console.WriteLine("Prototype Design Pattern!\n");
 
-            // Creating an Instance of Employee Class
-            Employee emp1 = new Employee { 
+            // Creating an Instance of Permanent Employee Class
+            Employee emp1 = new PermanentEmployee()
+            {
                 Name = "Anurag",
-                Department = "IT"
+                Department = "IT",
+                Type = "Permanent",
+                Salary = 100000
             };
-            // Instead of using Assignment Operator, now use the Clone method to create a Cloned Object
-            // Both emp1 and emp2 having different Memory Address
+            //Creating a Clone of the above Permanent Employee
             Employee emp2 = emp1.GetClone();
-            // Changing the Name Property Value of emp2 instance, 
-            // will not change the Name Property Value of emp1 instance
+            // Changing the Name and Department Property Value of emp2 instance, 
+            // will not change the Name and Department Property Value of the emp1 instance
             emp2.Name = "Pranaya";
-            Console.WriteLine("Emplpyee 1: ");
-            Console.WriteLine("Name: " + emp1.Name + ", Department: " + emp1.Department);
-            Console.WriteLine("Emplpyee 2: ");
-            Console.WriteLine("Name: " + emp2.Name + ", Department: " + emp2.Department);
+            emp2.Department = "HR";
+            emp1.ShowDetails();
+            emp2.ShowDetails();
+            // Creating an Instance of Temporary Employee Class
+            Employee emp3 = new TemporaryEmployee()
+            {
+                Name = "Preety",
+                Department = "HR",
+                Type = "Temporary",
+                FixedAmount = 200000
+            };
+            //Creating a Clone of the above Temporary Employee
+            Employee emp4 = emp3.GetClone();
+            // Changing the Name and Department Property Value of emp4 instance, 
+            // will not change the Name and Department Property Value of the emp3 instance
+            emp4.Name = "Priyanka";
+            emp4.Department = "Sales";
+            emp3.ShowDetails();
+            emp4.ShowDetails();
 
             Console.WriteLine("\nClick any key to exit ..");
             Console.Read();
